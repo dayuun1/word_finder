@@ -108,3 +108,15 @@ body {
     display: flex;
     justify-content: center;
 }
+
+.grid-cell.found {
+  background-color: #90EE90;
+}
+
+.grid-cell.found {
+  background-color: #90EE90;
+}
+
+.word-grid-container {
+  user-select: none;
+}

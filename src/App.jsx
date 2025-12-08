@@ -19,19 +19,24 @@ const GAME_STATES = {
 
 const App = () => {
   const [gameState, setGameState] = useState(GAME_STATES.START);
-  
+  const [finalScore, setFinalScore] = useState(0);
   const [language, setLanguage] = useState('ukr');
   const [difficulty, setDifficulty] = useState('5x5');
-  const [profile, setProfile] = useState({ 
-    nickname: 'WordMaster', 
-    wordsGuessed: 42 
+  const [theme, setTheme] = useState('default');
+  const [profile, setProfile] = useState({
+    nickname: 'WordMaster',
+    wordsGuessed: 42
   });
-  const [theme, setTheme] = useState('default'); 
 
   const navigate = (state) => setGameState(state);
   
   const handleStartGame = () => navigate(GAME_STATES.PLAYING); 
-  const handleEndGame = (score) => navigate(GAME_STATES.RESULTS);
+  
+  const handleEndGame = (score) => {
+    setFinalScore(score);
+    navigate(GAME_STATES.RESULTS);
+  };
+  
   const handleRestart = () => navigate(GAME_STATES.START);
 
   const renderPage = () => {
@@ -40,9 +45,17 @@ const App = () => {
         return <StartPage onStart={handleStartGame} />; 
         
       case GAME_STATES.PLAYING:
-        return <GamePage onEndGame={handleEndGame} currentDifficulty={difficulty} />;
+        return (
+          <GamePage 
+            onEndGame={handleEndGame} 
+            difficulty={difficulty}
+            language={language}
+          />
+        );
+        
       case GAME_STATES.RESULTS:
-        return <ResultsPage onRestart={handleRestart} finalScore={4} />;
+        return <ResultsPage onRestart={handleRestart} finalScore={finalScore} />; 
+        
       case GAME_STATES.SETTINGS:
         return (
           <SettingsPage 
@@ -55,17 +68,25 @@ const App = () => {
             onThemeChange={setTheme}
           />
         );
+        
       case GAME_STATES.PROFILE:
-        return <ProfilePage navigate={navigate} profile={profile} />;
+        return (
+          <ProfilePage 
+            navigate={navigate} 
+            profile={profile}
+          />
+        );
+        
       case GAME_STATES.WORD_LIST:
         return <WordListPage navigate={navigate} currentLang={language} />;
+        
       default:
-        return <StartPage navigate={navigate} />;
+        return <StartPage onStart={handleStartGame} />;
     }
   };
 
   return (
-    <div className={`app-container theme-${theme}`}>
+    <div className={`app-container theme-${theme}`}> 
       <Header navigate={navigate} gameState={gameState} /> 
       <div className="content-wrapper">
         {renderPage()}

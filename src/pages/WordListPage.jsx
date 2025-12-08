@@ -2,24 +2,11 @@
 import React from 'react';
 import Title from '../components/Title';
 import Button from '../components/Button';
+import { WORD_LISTS } from '../constants/wordLists';
 
-const WordListPage = ({ navigate, currentLang }) => {
-    const words = {
-        ukr: [
-            { word: 'КОД', guessed: true },
-            { word: 'ВІТЕР', guessed: false },
-            { word: 'РЕАКТ', guessed: true },
-            { word: 'ПРОЕКТ', guessed: false },
-        ],
-        eng: [
-            { word: 'CODE', guessed: true },
-            { word: 'WIND', guessed: false },
-            { word: 'REACT', guessed: true },
-            { word: 'PROJECT', guessed: false },
-        ]
-    };
-
-    const currentWords = words[currentLang] || words.ukr; 
+const WordListPage = ({ navigate, language }) => {
+  const allWords = WORD_LISTS[language];
+  const currentWords = words[currentLang] || words.ukr; 
 
     return (
         <div className="page word-list-page">
