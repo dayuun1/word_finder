@@ -11,10 +11,6 @@ const Header = ({ navigate, gameState }) => {
              <Button onClick={() => navigate('start')} styleType="text">Головна</Button>
         )}
         
-        <Button onClick={() => navigate('profile')}>
-          Профіль
-        </Button>
-        
         <Button onClick={() => navigate('word_list')}>
           Слова
         </Button>

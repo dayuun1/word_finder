@@ -1,23 +1,83 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Title from '../components/Title';
 import Button from '../components/Button';
 import WordGrid from '../components/WordGrid';
+import GameEndModal from '../components/GameEndModal';
 import { useWordGrid } from '../hooks/useWordGrid';
 import { useWordSelection } from '../hooks/useWordSelection';
 import { useGameTimer } from '../hooks/useGameTimer';
 
-const GamePage = ({ onEndGame, difficulty, language }) => {
-  const { grid, wordsInGrid, wordPositions } = useWordGrid(difficulty, language);
+const GamePage = ({ onEndGame, difficulty, language, timeLimit = 180, gameMode = 'classic', maxWordLength }) => {
+  const { grid, wordsInGrid, wordPositions, regenerateGrid } = useWordGrid(difficulty, language, maxWordLength);
   const {
     foundWords,
     handleCellMouseDown,
     handleCellMouseEnter,
     handleCellMouseUp,
     isCellSelected,
-    isCellFound
+    isCellFound,
+    resetSelection
   } = useWordSelection(grid, wordsInGrid, wordPositions);
 
-  const { timeLeft } = useGameTimer(180, true, () => onEndGame(foundWords.length));
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [gameEnded, setGameEnded] = useState(false);
+  
+  const hasFinishedRef = React.useRef(false); 
+
+  const finishGame = () => {
+      if (hasFinishedRef.current) return;
+      hasFinishedRef.current = true;
+
+      onEndGame(foundWords.length, difficulty, timeLimit, timeLeft);
+      
+      setGameEnded(true);
+      
+      setTimeout(() => { 
+          setIsModalOpen(true); 
+      }, 50); 
+  }
+
+  const handleTimeEnd = () => {
+    if (!gameEnded) {
+      finishGame(); 
+    }
+  };
+
+  const { timeLeft, resetTimer } = useGameTimer(timeLimit, !gameEnded, handleTimeEnd);
+
+  useEffect(() => {
+    if (foundWords.length === wordsInGrid.length && wordsInGrid.length > 0 && !gameEnded) {
+      finishGame(); 
+    }
+  }, [foundWords, wordsInGrid, gameEnded]);
+
+  const handleManualEnd = () => {
+    if (!gameEnded) {
+      finishGame(); 
+    }
+  };
+
+  const handleRestart = () => {
+    setIsModalOpen(false);
+    setGameEnded(false);
+    hasFinishedRef.current = false;
+    regenerateGrid();
+    resetSelection();
+    resetTimer();
+  };
+
+  const handleNextRound = () => {
+    setIsModalOpen(false);
+    setGameEnded(false);
+    hasFinishedRef.current = false;
+    regenerateGrid();
+    resetSelection();
+    resetTimer();
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="page game-page">
@@ -34,17 +94,32 @@ const GamePage = ({ onEndGame, difficulty, language }) => {
       />
 
       <div className="found-words-placeholder">
-        <h3>Знайдені слова:</h3>
+        <h3>Слова для пошуку:</h3>
         <ul>
-          {foundWords.map((word, idx) => (
-            <li key={idx}>{word}</li>
+          {wordsInGrid.map((word, idx) => (
+            <li 
+                key={idx} 
+                className={foundWords.includes(word) ? 'found-word' : ''}
+            >
+                {word}
+            </li>
           ))}
         </ul>
       </div>
 
-      <Button onClick={() => onEndGame(foundWords.length)} styleType="secondary">
+      <Button onClick={handleManualEnd} styleType="secondary" disabled={gameEnded}>
         Завершити
       </Button>
+
+      <GameEndModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onRestart={handleRestart}
+        onNextRound={handleNextRound}
+        score={foundWords.length}
+        totalWords={wordsInGrid.length}
+        timeLeft={timeLeft}
+      />
     </div>
   );
 };
