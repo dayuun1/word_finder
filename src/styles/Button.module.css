@@ -1,0 +1,63 @@
+.appButton {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.appButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.appButton:active {
+  transform: translateY(0);
+}
+
+.appButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+}
+
+.primary:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+}
+
+.secondary {
+  background: linear-gradient(135deg, #6c757d 0%, #545b62 100%);
+  color: white;
+}
+
+.secondary:hover {
+  background: linear-gradient(135deg, #545b62 0%, #3e4347 100%);
+}
+
+.text {
+  background: transparent;
+  color: #007bff;
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.text:hover {
+  color: #0056b3;
+  background: rgba(0, 123, 255, 0.05);
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .appButton {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,291 @@
+.page {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
+  width: 100%;
+  animation: fadeIn 0.4s ease-in-out;
+  color: #212529;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.startPage {
+  text-align: center;
+  max-width: 600px;
+}
+
+.description {
+  margin: 25px 0;
+  line-height: 1.8;
+  color: #495057;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.description p {
+  margin: 10px 0;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.featureIcon {
+  font-size: 40px;
+}
+
+.gamePage {
+  max-width: 900px;
+}
+
+.gameHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.wordsCounter {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.wordsCounter strong {
+  color: #007bff;
+  font-size: 22px;
+}
+
+.wordsList {
+  margin: 30px 0;
+}
+
+.wordsList h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #212529;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.wordsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.pendingWord {
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #212529;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pendingWord:hover {
+  background-color: #e7f3ff;
+  border-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.foundWord {
+  padding: 12px 16px;
+  background-color: #d4edda;
+  border: 2px solid #28a745;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #155724;
+  text-decoration: line-through;
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+}
+
+.settingsPage {
+  max-width: 700px;
+}
+
+.settingsForm {
+  width: 100%;
+}
+
+.formGroup {
+  margin-bottom: 25px;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.radioOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 15px;
+}
+
+.radioOption:hover {
+  border-color: #007bff;
+  background-color: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.radioOption input[type="radio"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.radioOption input[type="radio"]:checked + span,
+.radioOption:has(input[type="radio"]:checked) {
+  font-weight: 600;
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.appInput {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.appInput:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.errorMessage {
+  display: block;
+  color: #dc3545;
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.wordListPage {
+  max-width: 800px;
+}
+
+.note {
+  text-align: center;
+  color: #495057;
+  margin-bottom: 30px;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.wordListGroup {
+  margin-bottom: 35px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+}
+
+.groupTitle {
+  margin-bottom: 15px;
+  color: #007bff;
+  border-bottom: 3px solid #007bff;
+  padding-bottom: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.wordGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wordTag {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #212529;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wordTag:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+
+@media (max-width: 768px) {
+  .page {
+    padding: 25px;
+    margin: 10px;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+
+  .wordsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .wordGrid {
+    justify-content: center;
+  }
+}

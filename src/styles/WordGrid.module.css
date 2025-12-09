@@ -1,0 +1,101 @@
+.wordGridContainer {
+  display: inline-block;
+  border: 3px solid #007bff;
+  border-radius: 12px;
+  margin: 20px auto;
+  padding: 8px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  user-select: none;
+}
+
+.gridRow {
+  display: flex;
+}
+
+.gridCell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #495057;
+  font-weight: bold;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  color: #212529;
+  margin: 2px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gridCell:hover {
+  transform: scale(1.05);
+  border-color: #007bff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+  z-index: 10;
+}
+
+.gridCell.selected {
+  background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+  color: #000000;
+  border-color: #ff6f00;
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.5);
+  font-weight: 900;
+}
+
+.gridCell.found {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: #ffffff;
+  border-color: #1e7e34;
+  animation: foundPulse 0.5s ease;
+  font-weight: 900;
+}
+
+@keyframes foundPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .gridCell {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gridCell {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    margin: 1px;
+  }
+  
+  .wordGridContainer {
+    padding: 4px;
+  }
+}
+
+.wordGridContainer:has(.gridRow:nth-child(15)) .gridCell {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.wordGridContainer:has(.gridRow:nth-child(10):not(:nth-child(15))) .gridCell {
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+}

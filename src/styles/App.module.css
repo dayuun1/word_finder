@@ -1,0 +1,50 @@
+.appContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f9;
+  transition: background-color 0.3s ease;
+}
+
+.contentWrapper {
+  flex: 1;
+  padding-top: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 40px;
+}
+
+.themeDefault {
+  background-color: #f4f4f9;
+}
+
+.themeDark {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.themeDark .page {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.themeDifferent {
+  background-color: #0dd460;
+  min-height: 100vh;
+}
+
+.themeDifferent .page {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    padding-top: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
