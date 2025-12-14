@@ -6,6 +6,7 @@ import Title from '../components/Title';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { settingsSchema } from '../utils/validationSchema';
+import { useStore } from '../store/useStore';
 import styles from '../styles/Page.module.css';
 
 const languageOptions = [
@@ -30,8 +31,10 @@ const gameModeOptions = [
   { value: 'time', label: 'На час' }
 ];
 
-const SettingsPage = ({ settings, updateSetting }) => {
+const SettingsPage = () => {
   const navigate = useNavigate();
+  const settings = useStore((state) => state.settings);
+  const updateSettings = useStore((state) => state.updateSettings);
   
   const { control, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(settingsSchema),
@@ -43,10 +46,7 @@ const SettingsPage = ({ settings, updateSetting }) => {
   }, [settings, reset]);
 
   const onSubmit = (data) => {
-    Object.entries(data).forEach(([key, value]) => {
-      updateSetting(key, value);
-    });
-    
+    updateSettings(data);
   };
 
   return (

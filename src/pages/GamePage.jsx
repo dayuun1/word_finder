@@ -7,19 +7,21 @@ import GameEndModal from '../components/GameEndModal';
 import { useWordGrid } from '../hooks/useWordGrid';
 import { useWordSelection } from '../hooks/useWordSelection';
 import { useGameTimer } from '../hooks/useGameTimer';
+import { useStore } from '../store/useStore';
 import styles from '../styles/Page.module.css';
 
-const GamePage = ({ 
-  difficulty, 
-  language, 
-  timeLimit = 180, 
-  gameMode = 'classic', 
-  maxWordLength,
-  profile,
-  updateProfile 
-}) => {
+const GamePage = () => {
   const navigate = useNavigate();
-  const { grid, wordsInGrid, wordPositions, regenerateGrid } = useWordGrid(difficulty, language, maxWordLength);
+  
+  const settings = useStore((state) => state.settings);
+  const addGameResult = useStore((state) => state.addGameResult);
+  
+  const { grid, wordsInGrid, wordPositions, regenerateGrid } = useWordGrid(
+    settings.difficulty, 
+    settings.language, 
+    settings.maxWordLength
+  );
+  
   const {
     foundWords,
     handleCellMouseDown,
@@ -40,6 +42,18 @@ const GamePage = ({
     hasFinishedRef.current = true;
 
     setGameEnded(true);
+    
+    const won = foundWords.length === wordsInGrid.length;
+    addGameResult({
+      score: foundWords.length,
+      totalWords: wordsInGrid.length,
+      timeLeft,
+      won,
+      difficulty: settings.difficulty,
+      language: settings.language,
+      date: new Date().toISOString()
+    });
+    
     setTimeout(() => { 
       setIsModalOpen(true); 
     }, 50);
@@ -51,7 +65,7 @@ const GamePage = ({
     }
   };
 
-  const { timeLeft, resetTimer } = useGameTimer(timeLimit, !gameEnded, handleTimeEnd);
+  const { timeLeft, resetTimer } = useGameTimer(settings.timeLimit, !gameEnded, handleTimeEnd);
 
   useEffect(() => {
     if (foundWords.length === wordsInGrid.length && wordsInGrid.length > 0 && !gameEnded) {

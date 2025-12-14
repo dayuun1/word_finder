@@ -37,22 +37,11 @@
   margin: 10px 0;
 }
 
-.features {
+.buttonGroup {
   display: flex;
-  justify-content: space-around;
-  margin-top: 40px;
-  gap: 20px;
-}
-
-.feature {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.featureIcon {
-  font-size: 40px;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .gamePage {
@@ -262,15 +251,91 @@
   box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
 }
 
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.statBox {
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: #6c757d;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.statValue {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.emptyMessage {
+  text-align: center;
+  color: #6c757d;
+  padding: 30px;
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.historyItem {
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.historyHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.gameStatus {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.gameStatus.won {
+  color: #28a745;
+}
+
+.gameStatus.lost {
+  color: #dc3545;
+}
+
+.gameDate {
+  font-size: 13px;
+  color: #6c757d;
+}
+
+.historyDetails {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+  color: #495057;
+}
+
+.historyDetails strong {
+  color: #007bff;
+}
 
 @media (max-width: 768px) {
   .page {
     padding: 25px;
     margin: 10px;
-  }
-
-  .features {
-    flex-direction: column;
   }
 
   .wordsGrid {
@@ -287,5 +352,14 @@
 
   .wordGrid {
     justify-content: center;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .historyDetails {
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }

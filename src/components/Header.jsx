@@ -1,11 +1,8 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from '../styles/Header.module.css';
 
 const Header = () => {
-  const location = useLocation();
-  const isPlaying = location.pathname === '/game';
-
   return (
     <header className={styles.appHeader}>
       <Link to="/" className={styles.logoLink}>
@@ -13,16 +10,21 @@ const Header = () => {
       </Link>
       
       <nav className={styles.headerNav}>
-          <Link to="/" className={styles.navLink}>
-            <button className={`${styles.navButton} ${styles.textButton}`}>
-              Головна
-            </button>
-          </Link>
-        
+        <Link to="/" className={styles.navLink}>
+          <button className={`${styles.navButton} ${styles.textButton}`}>
+            Головна
+          </button>
+        </Link>
         
         <Link to="/words" className={styles.navLink}>
           <button className={`${styles.navButton} ${styles.primaryButton}`}>
             Слова
+          </button>
+        </Link>
+        
+        <Link to="/leaderboard" className={styles.navLink}>
+          <button className={`${styles.navButton} ${styles.primaryButton}`}>
+            Результати
           </button>
         </Link>
         
@@ -31,7 +33,6 @@ const Header = () => {
             Налаштування
           </button>
         </Link>
-
       </nav>
     </header>
   );
