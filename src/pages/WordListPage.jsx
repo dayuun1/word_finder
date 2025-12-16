@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Title from '../components/Title';
 import Button from '../components/Button';
 import { WORD_LISTS } from '../constants/wordLists';
-import { useStore } from '../store/useStore';
+import { useSettingsStore } from '../store/useSettingsStore';
 import styles from '../styles/Page.module.css';
 
 const WordListPage = () => {
   const navigate = useNavigate();
-  const currentLang = useStore((state) => state.settings.language);
+  const currentLang = useSettingsStore((state) => state.settings.language);
   const listsByDifficulty = WORD_LISTS[currentLang];
 
   if (!listsByDifficulty) {

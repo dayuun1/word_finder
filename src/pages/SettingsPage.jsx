@@ -6,7 +6,7 @@ import Title from '../components/Title';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { settingsSchema } from '../utils/validationSchema';
-import { useStore } from '../store/useStore';
+import { useSettingsStore } from '../store/useSettingsStore';
 import styles from '../styles/Page.module.css';
 
 const languageOptions = [
@@ -33,8 +33,8 @@ const gameModeOptions = [
 
 const SettingsPage = () => {
   const navigate = useNavigate();
-  const settings = useStore((state) => state.settings);
-  const updateSettings = useStore((state) => state.updateSettings);
+  const settings = useSettingsStore((state) => state.settings);
+  const updateSettings = useSettingsStore((state) => state.updateSettings);
   
   const { control, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(settingsSchema),

@@ -7,151 +7,159 @@ import GameEndModal from '../components/GameEndModal';
 import { useWordGrid } from '../hooks/useWordGrid';
 import { useWordSelection } from '../hooks/useWordSelection';
 import { useGameTimer } from '../hooks/useGameTimer';
-import { useStore } from '../store/useStore';
+import { useSettingsStore } from '../store/useSettingsStore'; 
+import { useProfileStore } from '../store/useProfileStore';
+import { useGameResultStore } from '../store/useGameResultStore';
 import styles from '../styles/Page.module.css';
 
 const GamePage = () => {
-  const navigate = useNavigate();
-  
-  const settings = useStore((state) => state.settings);
-  const addGameResult = useStore((state) => state.addGameResult);
-  
-  const { grid, wordsInGrid, wordPositions, regenerateGrid } = useWordGrid(
-    settings.difficulty, 
-    settings.language, 
-    settings.maxWordLength
-  );
-  
-  const {
-    foundWords,
-    handleCellMouseDown,
-    handleCellMouseEnter,
-    handleCellMouseUp,
-    isCellSelected,
-    isCellFound,
-    resetSelection
-  } = useWordSelection(grid, wordsInGrid, wordPositions);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [gameEnded, setGameEnded] = useState(false);
-  
-  const hasFinishedRef = useRef(false);
-
-  const finishGame = () => {
-    if (hasFinishedRef.current) return;
-    hasFinishedRef.current = true;
-
-    setGameEnded(true);
+    const navigate = useNavigate();
     
-    const won = foundWords.length === wordsInGrid.length;
-    addGameResult({
-      score: foundWords.length,
-      totalWords: wordsInGrid.length,
-      timeLeft,
-      won,
-      difficulty: settings.difficulty,
-      language: settings.language,
-      date: new Date().toISOString()
-    });
+    const settings = useSettingsStore((state) => state.settings);
+    const addGameResult = useProfileStore((state) => state.addGameResult);
+    const setLastResult = useGameResultStore((state) => state.setLastResult);
+    const clearLastResult = useGameResultStore((state) => state.clearLastResult);
+
+    const { grid, wordsInGrid, wordPositions, regenerateGrid } = useWordGrid(
+        settings.difficulty, 
+        settings.language, 
+        settings.maxWordLength
+    );
     
-    setTimeout(() => { 
-      setIsModalOpen(true); 
-    }, 50);
-  };
+    const {
+        foundWords,
+        handleCellMouseDown,
+        handleCellMouseEnter,
+        handleCellMouseUp,
+        isCellSelected,
+        isCellFound,
+        resetSelection
+    } = useWordSelection(grid, wordsInGrid, wordPositions);
 
-  const handleTimeEnd = () => {
-    if (!gameEnded) {
-      finishGame();
-    }
-  };
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [gameEnded, setGameEnded] = useState(false);
+    
+    const hasFinishedRef = useRef(false);
 
-  const { timeLeft, resetTimer } = useGameTimer(settings.timeLimit, !gameEnded, handleTimeEnd);
+    const finishGame = () => {
+        if (hasFinishedRef.current) return;
+        hasFinishedRef.current = true;
 
-  useEffect(() => {
-    if (foundWords.length === wordsInGrid.length && wordsInGrid.length > 0 && !gameEnded) {
-      finishGame();
-    }
-  }, [foundWords, wordsInGrid, gameEnded]);
+        setGameEnded(true);
+        
+        const won = foundWords.length === wordsInGrid.length;
+        
+        const resultData = {
+            score: foundWords.length,
+            totalWords: wordsInGrid.length,
+            timeLeft,
+            won,
+            difficulty: settings.difficulty,
+            language: settings.language,
+            date: new Date().toISOString()
+        };
+        
+        addGameResult(resultData);
+        setLastResult(resultData);
 
-  const handleManualEnd = () => {
-    if (!gameEnded) {
-      finishGame();
-    }
-  };
+        setTimeout(() => { 
+            setIsModalOpen(true); 
+        }, 50);
+    };
 
-  const handleRestart = () => {
-    setIsModalOpen(false);
-    setGameEnded(false);
-    hasFinishedRef.current = false;
-    regenerateGrid();
-    resetSelection();
-    resetTimer();
-  };
+    const handleTimeEnd = () => {
+        if (!gameEnded) {
+            finishGame();
+        }
+    };
 
-  const handleNextRound = () => {
-    handleRestart();
-  };
+    const { timeLeft, resetTimer } = useGameTimer(settings.timeLimit, !gameEnded, handleTimeEnd);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+    useEffect(() => {
+        if (foundWords.length === wordsInGrid.length && wordsInGrid.length > 0 && !gameEnded) {
+            finishGame();
+        }
+    }, [foundWords, wordsInGrid, gameEnded, settings]);
 
-  const handleBackToHome = () => {
-    navigate('/');
-  };
+    const handleManualEnd = () => {
+        if (!gameEnded) {
+            finishGame();
+        }
+    };
 
-  return (
-    <div className={`${styles.page} ${styles.gamePage}`}>
-      <div className={styles.gameHeader}>
-        <Title text={`Час: ${timeLeft}с`} type="h2" />
-        <p className={styles.wordsCounter}>
-          Знайдено слів: <strong>{foundWords.length}</strong> / {wordsInGrid.length}
-        </p>
-      </div>
+    const handleRestart = () => {
+        setIsModalOpen(false);
+        setGameEnded(false);
+        hasFinishedRef.current = false;
+        
+        regenerateGrid();
+        resetSelection();
+        resetTimer();
+        
+        clearLastResult();
+    };
 
-      <WordGrid
-        grid={grid}
-        onCellMouseDown={handleCellMouseDown}
-        onCellMouseEnter={handleCellMouseEnter}
-        onCellMouseUp={handleCellMouseUp}
-        isCellSelected={isCellSelected}
-        isCellFound={isCellFound}
-      />
+    const handleNextRound = () => {
+        handleRestart();
+    };
 
-      <div className={styles.wordsList}>
-        <h3>Слова для пошуку:</h3>
-        <ul className={styles.wordsGrid}>
-          {wordsInGrid.map((word, idx) => (
-            <li 
-              key={idx} 
-              className={foundWords.includes(word) ? styles.foundWord : styles.pendingWord}
-            >
-              {word}
-            </li>
-          ))}
-        </ul>
-      </div>
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
-      <div className={styles.buttonGroup}>
-        <Button onClick={handleManualEnd} styleType="secondary" disabled={gameEnded}>
-          Завершити
-        </Button>
-        <Button onClick={handleBackToHome} styleType="text">
-          На головну
-        </Button>
-      </div>
+    const handleBackToHome = () => {
+        navigate('/');
+    };
 
-      <GameEndModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        onRestart={handleRestart}
-        onNextRound={handleNextRound}
-        score={foundWords.length}
-        totalWords={wordsInGrid.length}
-        timeLeft={timeLeft}
-      />
-    </div>
-  );
+    return (
+        <div className={`${styles.page} ${styles.gamePage}`}>
+            <div className={styles.gameHeader}>
+                <Title text={`Час: ${timeLeft}с`} type="h2" />
+                <p className={styles.wordsCounter}>
+                    Знайдено слів: <strong>{foundWords.length}</strong> / {wordsInGrid.length}
+                </p>
+            </div>
+
+            <WordGrid
+                grid={grid}
+                onCellMouseDown={handleCellMouseDown}
+                onCellMouseEnter={handleCellMouseEnter}
+                onCellMouseUp={handleCellMouseUp}
+                isCellSelected={isCellSelected}
+                isCellFound={isCellFound}
+            />
+
+            <div className={styles.wordsList}>
+                <h3>Слова для пошуку:</h3>
+                <ul className={styles.wordsGrid}>
+                    {wordsInGrid.map((word, idx) => (
+                        <li 
+                            key={idx} 
+                            className={foundWords.includes(word) ? styles.foundWord : styles.pendingWord}
+                        >
+                            {word}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <div className={styles.buttonGroup}>
+                <Button onClick={handleManualEnd} styleType="secondary" disabled={gameEnded}>
+                    Завершити
+                </Button>
+                <Button onClick={handleBackToHome} styleType="text">
+                    На головну
+                </Button>
+            </div>
+
+            <GameEndModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                onRestart={handleRestart}
+                onNextRound={handleNextRound}
+            />
+        </div>
+    );
 };
 
 export default GamePage;

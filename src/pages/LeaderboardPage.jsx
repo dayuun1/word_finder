@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Title from '../components/Title';
 import Button from '../components/Button';
 import Card from '../components/Card';
-import { useStore } from '../store/useStore';
+import { useProfileStore } from '../store/useProfileStore';
 import styles from '../styles/Page.module.css';
 
 const LeaderboardPage = () => {
   const navigate = useNavigate();
-  const profile = useStore((state) => state.profile);
+const profile = useProfileStore((state) => state.profile);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);

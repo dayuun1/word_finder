@@ -6,11 +6,11 @@ import SettingsPage from './pages/SettingsPage';
 import WordListPage from './pages/WordListPage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import Header from './components/Header';
-import { useStore } from './store/useStore';
+import { useSettingsStore } from './store/useSettingsStore';
 import styles from './styles/App.module.css';
 
 const App = () => {
-  const settings = useStore((state) => state.settings);
+  const settings = useSettingsStore((state) => state.settings);
 
   return (
     <BrowserRouter>
