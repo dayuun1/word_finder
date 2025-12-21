@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Title from '../components/Title';
 import Button from '../components/Button';
 import WordGrid from '../components/WordGrid';
@@ -6,8 +7,12 @@ import GameEndModal from '../components/GameEndModal';
 import { useWordGrid } from '../hooks/useWordGrid';
 import { useWordSelection } from '../hooks/useWordSelection';
 import { useGameTimer } from '../hooks/useGameTimer';
+import styles from './GamePage.module.css';
 
-const GamePage = ({ onEndGame, difficulty, language, timeLimit = 180, gameMode = 'classic', maxWordLength }) => {
+const GamePage = ({ difficulty, language, timeLimit = 180, gameMode = 'classic', maxWordLength }) => {
+  const navigate = useNavigate();
+  const { userId } = useParams();
+  
   const { grid, wordsInGrid, wordPositions, regenerateGrid } = useWordGrid(difficulty, language, maxWordLength);
   const {
     foundWords,
@@ -28,8 +33,6 @@ const GamePage = ({ onEndGame, difficulty, language, timeLimit = 180, gameMode =
       if (hasFinishedRef.current) return;
       hasFinishedRef.current = true;
 
-      onEndGame(foundWords.length, difficulty, timeLimit, timeLeft);
-      
       setGameEnded(true);
       
       setTimeout(() => { 
@@ -79,10 +82,14 @@ const GamePage = ({ onEndGame, difficulty, language, timeLimit = 180, gameMode =
     setIsModalOpen(false);
   };
 
+  const handleBackToHome = () => {
+    navigate(`/user/${userId}`);
+  };
+
   return (
-    <div className="page game-page">
+    <div className={styles.page}>
       <Title text={`Час: ${timeLeft}с`} type="h2" />
-      <p>Знайдено слів: {foundWords.length} / {wordsInGrid.length}</p>
+      <p className={styles.scoreText}>Знайдено слів: {foundWords.length} / {wordsInGrid.length}</p>
 
       <WordGrid
         grid={grid}
@@ -93,13 +100,13 @@ const GamePage = ({ onEndGame, difficulty, language, timeLimit = 180, gameMode =
         isCellFound={isCellFound}
       />
 
-      <div className="found-words-placeholder">
+      <div className={styles.foundWordsPlaceholder}>
         <h3>Слова для пошуку:</h3>
-        <ul>
+        <ul className={styles.wordList}>
           {wordsInGrid.map((word, idx) => (
             <li 
                 key={idx} 
-                className={foundWords.includes(word) ? 'found-word' : ''}
+                className={foundWords.includes(word) ? styles.foundWord : ''}
             >
                 {word}
             </li>
@@ -107,9 +114,14 @@ const GamePage = ({ onEndGame, difficulty, language, timeLimit = 180, gameMode =
         </ul>
       </div>
 
-      <Button onClick={handleManualEnd} styleType="secondary" disabled={gameEnded}>
-        Завершити
-      </Button>
+      <div className={styles.buttonGroup}>
+        <Button onClick={handleManualEnd} styleType="secondary" disabled={gameEnded}>
+          Завершити
+        </Button>
+        <Button onClick={handleBackToHome} styleType="text">
+          На головну
+        </Button>
+      </div>
 
       <GameEndModal
         isOpen={isModalOpen}

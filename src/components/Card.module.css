@@ -1,0 +1,38 @@
+
+.appCard {
+    background-color: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.appCard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #3da2c3;
+}
+
+.cardTitle {
+    color: #3da2c3;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #3da2c3;
+    font-weight: 700;
+}
+
+.cardContent {
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .appCard {
+        padding: 20px 15px;
+    }
+
+    .cardTitle {
+        font-size: 18px;
+    }
+}

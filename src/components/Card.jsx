@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './Card.module.css';
 
 const Card = ({ title, children }) => {
   return (
-    <div className="app-card">
-      {title && <h2 className="card-title">{title}</h2>}
-      <div className="card-content">
+    <div className={styles.appCard}>
+      {title && <h2 className={styles.cardTitle}>{title}</h2>}
+      <div className={styles.cardContent}>
         {children}
       </div>
     </div>

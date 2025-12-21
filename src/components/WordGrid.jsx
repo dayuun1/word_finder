@@ -1,13 +1,14 @@
 import React from 'react';
+import styles from './WordGrid.module.css';
 
 const WordGrid = ({ grid, onCellMouseDown, onCellMouseEnter, onCellMouseUp, isCellSelected, isCellFound }) => (
-  <div className="word-grid-container">
+  <div className={styles.wordGridContainer}>
     {grid.map((row, rIdx) => (
-      <div key={rIdx} className="grid-row">
+      <div key={rIdx} className={styles.gridRow}>
         {row.map((letter, cIdx) => (
           <div
             key={cIdx}
-            className={`grid-cell ${isCellSelected(rIdx, cIdx) ? 'selected' : ''} ${isCellFound(rIdx, cIdx) ? 'found' : ''}`}
+            className={`${styles.gridCell} ${isCellSelected(rIdx, cIdx) ? styles.selected : ''} ${isCellFound(rIdx, cIdx) ? styles.found : ''}`}
             onMouseDown={() => onCellMouseDown(rIdx, cIdx)}
             onMouseEnter={() => onCellMouseEnter(rIdx, cIdx)}
             onMouseUp={onCellMouseUp}
@@ -20,4 +21,4 @@ const WordGrid = ({ grid, onCellMouseDown, onCellMouseEnter, onCellMouseUp, isCe
   </div>
 );
 
-export default WordGrid;
+export default WordGrid

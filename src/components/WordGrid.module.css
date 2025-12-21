@@ -1,0 +1,63 @@
+.wordGridContainer {
+    display: inline-block;
+    border: 3px solid #3da2c3;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(61, 162, 195, 0.2);
+    user-select: none;
+}
+
+.gridRow {
+    display: flex;
+}
+
+.gridCell {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.gridCell:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.05);
+}
+
+.gridCell.selected {
+    background-color: #ffcc00;
+    color: #000;
+    border-color: #ff9900;
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.gridCell.found {
+    background-color: #90EE90;
+    color: #2d6a2d;
+    border-color: #5cb85c;
+}
+
+@media (max-width: 768px) {
+    .gridCell {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gridCell {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+}

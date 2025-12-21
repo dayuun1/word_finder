@@ -1,0 +1,40 @@
+.appContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.contentWrapper {
+    flex: 1;
+    padding-top: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 40px;
+}
+
+/* Теми */
+.themeDefault {
+    background-color: #f4f4f9;
+}
+
+.themeDark {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+.themeDifferent {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+@media (max-width: 768px) {
+    .contentWrapper {
+        padding-top: 70px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

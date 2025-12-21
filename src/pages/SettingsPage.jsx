@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Title from '../components/Title';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { settingsSchema } from '../utils/validationSchema';
+import styles from './SettingsPage.module.css';
 
 const languageOptions = [
     { value: 'ukr', label: 'Українська' },
@@ -29,7 +31,6 @@ const gameModeOptions = [
 ];
 
 const SettingsPage = ({ 
-  navigate, 
   currentLang, 
   onLangChange, 
   currentDiff, 
@@ -43,6 +44,8 @@ const SettingsPage = ({
   currentMaxWordLength,
   onMaxWordLengthChange,
 }) => {
+  const navigate = useNavigate();
+  const { userId } = useParams();
   
   const { control, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(settingsSchema),
@@ -79,20 +82,20 @@ const SettingsPage = ({
   };
 
   return (
-    <div className="page settings-page">
+    <div className={styles.page}>
       <Title text="Налаштування Гри" type="h1" />
       
-      <form onSubmit={handleSubmit(onSubmit)} className="settings-form">
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.settingsForm}>
         <Card title="Мова">
-          <div className="form-group">
-            <label className="form-label">Оберіть мову інтерфейсу та слів:</label>
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Оберіть мову інтерфейсу та слів:</label>
             <Controller
               name="language"
               control={control}
               render={({ field }) => (
-                <div className="radio-options">
+                <div className={styles.radioOptions}>
                   {languageOptions.map((option) => (
-                    <label key={option.value} className="radio-option">
+                    <label key={option.value} className={styles.radioOption}>
                       <input
                         type="radio"
                         value={option.value}
@@ -105,20 +108,20 @@ const SettingsPage = ({
                 </div>
               )}
             />
-            {errors.language && <span className="error-message">{errors.language.message}</span>}
+            {errors.language && <span className={styles.errorMessage}>{errors.language.message}</span>}
           </div>
         </Card>
 
         <Card title="Складність та Слова">
-          <div className="form-group">
-            <label className="form-label">Розмір сітки:</label>
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Розмір сітки:</label>
             <Controller
               name="difficulty"
               control={control}
               render={({ field }) => (
-                <div className="radio-options">
+                <div className={styles.radioOptions}>
                   {difficultyOptions.map((option) => (
-                    <label key={option.value} className="radio-option">
+                    <label key={option.value} className={styles.radioOption}>
                       <input
                         type="radio"
                         value={option.value}
@@ -131,37 +134,37 @@ const SettingsPage = ({
                 </div>
               )}
             />
-            {errors.difficulty && <span className="error-message">{errors.difficulty.message}</span>}
+            {errors.difficulty && <span className={styles.errorMessage}>{errors.difficulty.message}</span>}
           </div>
 
-          <div className="form-group">
-            <label className="form-label">Максимальна довжина слова:</label>
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Максимальна довжина слова:</label>
             <Controller
               name="maxWordLength"
               control={control}
               render={({ field }) => (
                 <input 
                   type="number" 
-                  className="app-input"
+                  className={styles.appInput}
                   {...field}
                   onChange={(e) => field.onChange(parseInt(e.target.value))}
                 />
               )}
             />
-            {errors.maxWordLength && <span className="error-message">{errors.maxWordLength.message}</span>}
+            {errors.maxWordLength && <span className={styles.errorMessage}>{errors.maxWordLength.message}</span>}
           </div>
         </Card>
         
         <Card title="Тема та Режим">
-          <div className="form-group">
-            <label className="form-label">Тема (Колір сторінки/поля):</label>
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Тема (Колір сторінки/поля):</label>
             <Controller
               name="theme"
               control={control}
               render={({ field }) => (
-                <div className="radio-options">
+                <div className={styles.radioOptions}>
                   {themeOptions.map((option) => (
-                    <label key={option.value} className="radio-option">
+                    <label key={option.value} className={styles.radioOption}>
                       <input
                         type="radio"
                         value={option.value}
@@ -174,18 +177,18 @@ const SettingsPage = ({
                 </div>
               )}
             />
-            {errors.theme && <span className="error-message">{errors.theme.message}</span>}
+            {errors.theme && <span className={styles.errorMessage}>{errors.theme.message}</span>}
           </div>
 
-          <div className="form-group">
-            <label className="form-label">Режим гри:</label>
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Режим гри:</label>
             <Controller
               name="gameMode"
               control={control}
               render={({ field }) => (
-                <div className="radio-options">
+                <div className={styles.radioOptions}>
                   {gameModeOptions.map((option) => (
-                    <label key={option.value} className="radio-option">
+                    <label key={option.value} className={styles.radioOption}>
                       <input
                         type="radio"
                         value={option.value}
@@ -198,30 +201,30 @@ const SettingsPage = ({
                 </div>
               )}
             />
-            {errors.gameMode && <span className="error-message">{errors.gameMode.message}</span>}
+            {errors.gameMode && <span className={styles.errorMessage}>{errors.gameMode.message}</span>}
           </div>
 
-          <div className="form-group">
-            <label className="form-label">Ліміт часу (секунди):</label>
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Ліміт часу (секунди):</label>
             <Controller
               name="timeLimit"
               control={control}
               render={({ field }) => (
                 <input 
                   type="number" 
-                  className="app-input"
+                  className={styles.appInput}
                   {...field}
                   onChange={(e) => field.onChange(parseInt(e.target.value))}
                 />
               )}
             />
-            {errors.timeLimit && <span className="error-message">{errors.timeLimit.message}</span>}
+            {errors.timeLimit && <span className={styles.errorMessage}>{errors.timeLimit.message}</span>}
           </div>
         </Card>
         
-        <div className="form-actions">
+        <div className={styles.formActions}>
           <Button type="submit" styleType="primary">Зберегти налаштування</Button>
-          <Button type="button" onClick={() => navigate('start')} styleType="secondary">
+          <Button type="button" onClick={() => navigate(`/user/${userId}`)} styleType="secondary">
             Повернутися на Головну
           </Button>
         </div>

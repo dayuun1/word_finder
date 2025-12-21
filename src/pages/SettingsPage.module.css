@@ -1,0 +1,111 @@
+.page {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    max-width: 700px;
+    width: 100%;
+}
+
+.settingsForm {
+    width: 100%;
+}
+
+.formGroup {
+    margin-bottom: 25px;
+}
+
+.formLabel {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
+    text-align: left;
+}
+
+.radioOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radioOption {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    background-color: #fafafa;
+}
+
+.radioOption:hover {
+    border-color: #3da2c3;
+    background-color: #f0f8ff;
+    transform: translateX(5px);
+}
+
+.radioOption input[type="radio"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #3da2c3;
+}
+
+.radioOption input[type="radio"]:checked {
+    background-color: #3da2c3;
+}
+
+.appInput {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: #fafafa;
+}
+
+.appInput:focus {
+    outline: none;
+    border-color: #3da2c3;
+    background-color: #ffffff;
+}
+
+.errorMessage {
+    display: block;
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 8px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.formActions {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+    justify-content: center;
+}
+
+.formActions button {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 25px 15px;
+    }
+
+    .formActions {
+        flex-direction: column;
+    }
+
+    .formActions button {
+        width: 100%;
+    }
+}
