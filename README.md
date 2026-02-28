@@ -1,6 +1,6 @@
-# Word Finder    [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Word Finder · [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A "Word Search" game built with React. Find various words in a grid of different sizes vertically, horizontally, and diagonally.
+A "Word Finder" game built with React. Find various words in a grid of different sizes vertically, horizontally, and diagonally.
 
 ---
 
@@ -44,6 +44,11 @@ npm run dev
 **Vonsovych Danil**
 - GitHub: [@dayuun1](https://github.com/dayuun1)
 - Email: ipz232_vdb@student.ztu.edu.ua
+
+---
+
+## License
+Word Finder is [MIT licensed](https://github.com/dayuun1/word_finder/blob/Lab1(standart)/LICENSE).
 
 
 
