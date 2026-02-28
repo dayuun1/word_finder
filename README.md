@@ -54,8 +54,8 @@ npm run dev
 ---
 
 ## License
-Word Finder is [MIT licensed](https://github.com/dayuun1/word_finder/blob/Lab1(standart)/LICENSE).
-Full Dependency License Report:[licenses-report.txt](https://github.com/dayuun1/word_finder/blob/Lab1(standart)/licenses-report.txt)
-Direct Dependency License Report:[license_report_direct.txt](https://github.com/dayuun1/word_finder/blob/Lab1(standart)/license_report_direct.txt)
+- Word Finder is [MIT licensed](https://github.com/dayuun1/word_finder/blob/Lab1(standart)/LICENSE).
+- Full Dependency License Report:[licenses-report.txt](https://github.com/dayuun1/word_finder/blob/Lab1(standart)/licenses-report.txt)
+- Direct Dependency License Report:[license_report_direct.txt](https://github.com/dayuun1/word_finder/blob/Lab1(standart)/license_report_direct.txt)
 
 
