@@ -1,9 +1,11 @@
 import { useState } from 'react';
-/**
- * @fileoverview Хук виділення та перевірки слів
- * @module hooks/useWordSelection
- */
 
+/**
+ * @category Hooks
+ * @module useWordSelection
+ * @memberof Hooks
+ * @description Хук виділення та перевірки слів
+ */
 /**
  * Хук виділення слів
  * @typedef {Object} CellPosition

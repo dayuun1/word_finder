@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from '../styles/WordGrid.module.css';
 /**
- * @fileoverview Компонент ігрового поля
- * @module components/WordGrid
+ * @category Components
+ * @module WordGrid
+ * @memberof Components
+ * @description Компонент ігрового поля
  */
 /**
  * Ігрове поле
@@ -10,6 +10,10 @@ import styles from '../styles/WordGrid.module.css';
  * @param {Function} isCellSelected - (row, col) => boolean
  * @param {Function} isCellFound - (row, col) => boolean
  */
+import React from 'react';
+import styles from '../styles/WordGrid.module.css';
+
+
 const WordGrid = ({ grid, onCellMouseDown, onCellMouseEnter, onCellMouseUp, isCellSelected, isCellFound }) => (
   <div className={styles.wordGridContainer}>
     {grid.map((row, rIdx) => (

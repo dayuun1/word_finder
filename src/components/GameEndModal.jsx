@@ -2,8 +2,10 @@ import React from 'react';
 import Portal from './Portal';
 import Button from './Button';
 /**
- * @fileoverview Компонент Модального вікна
- * @module components/GameEndModal
+ * @category Components
+ * @module GameEndModal
+ * @memberof Components
+ * @description Компонент Модального вікна
  */
 /**
  * Модальне вікно завершення гри

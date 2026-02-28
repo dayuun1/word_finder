@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Header.module.css';
 /**
- * @fileoverview Компонент шапки навігації
- * @module components/Header
+ * @category Components
+ * @module Header
+ * @memberof Components
+ * @description Компонент шапки навігації
  */
 /** 
  * Шапка з навігацією. Рендериться на всіх сторінках. 

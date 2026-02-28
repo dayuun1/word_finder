@@ -1,10 +1,11 @@
 import React from 'react';
 
 /**
- * @fileoverview Компонент заголовку
- * @module components/Title
+ * @category Components
+ * @module Title
+ * @memberof Components
+ * @description Компонент заголовку
  */
-
 /**
  * Універсальний компонент заголовку.
  * Рендерить будь-який HTML-тег заголовку.

@@ -1,10 +1,11 @@
 import React from 'react';
 
 /**
- * @fileoverview Компонент радіо-кнопок
- * @module components/RadioGroup
+ * @category Components
+ * @module RadioGroup
+ * @memberof Components
+ * @description Компонент радіо-кнопок
  */
-
 /**
  * @typedef {Object} RadioOption
  * @property {string} value - Значення опції

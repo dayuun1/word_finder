@@ -6,15 +6,16 @@
     "includePattern": "\\.(js|jsx)$",
     "excludePattern": "(node_modules/|docs/|dist/)"
   },
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/better-docs/category"
+  ],
   "opts": {
+    "template": "node_modules/better-docs",
     "destination": "docs/",
     "recurse": true,
-    "readme": "README.md",
-    "template": "node_modules/better-docs"
+    "readme": "README.md"
   },
-  "plugins": [
-    "plugins/markdown"
-  ],
   "templates": {
     "cleverLinks": true,
     "monospaceLinks": false

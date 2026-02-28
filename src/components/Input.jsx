@@ -1,10 +1,11 @@
 import React from 'react';
 
 /**
- * @fileoverview Компонент текстового поля вводу
- * @module components/Input
+ * @category Components
+ * @module Input
+ * @memberof Components
+ * @description Компонент текстового поля вводу
  */
-
 /**
  * Універсальне поле вводу з підписом.
  * @param {string} label - Текст підпису поля

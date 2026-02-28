@@ -1,8 +1,11 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+
 /**
- * @fileoverview Стор налаштувань гри
- * @module store/useSettingsStore
+ * @category Store
+ * @module useSettingsStore
+ * @memberof Store
+ * @description Стор налаштувань гри
  */
 /**
  * @typedef {Object} GameSettings

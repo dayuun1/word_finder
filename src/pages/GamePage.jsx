@@ -13,10 +13,11 @@ import { useGameResultStore } from '../store/useGameResultStore';
 import styles from '../styles/Page.module.css';
 
 /**
- * @fileoverview Сторінка гри
- * @module pages/GamePage
+ * @category Pages
+ * @module GamePage
+ * @memberof Pages
+ * @description Сторінка гри
  */
-
 /**
  * Головна сторінка гри.
  * Керує станом раунду: генерація сітки, таймер, виділення слів,

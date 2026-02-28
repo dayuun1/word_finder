@@ -7,10 +7,11 @@ import { useProfileStore } from '../store/useProfileStore';
 import styles from '../styles/Page.module.css';
 
 /**
- * @fileoverview Сторінка таблиці результатів
- * @module pages/LeaderboardPage
+ * @category Pages
+ * @module LeaderboardPage
+ * @memberof Pages
+ * @description Сторінка таблиці результатів
  */
-
 /**
  * Сторінка зі статистикою гравця та історією ігор.
  * Відображає загальні показники (кількість ігор, відсоток перемог, середній рахунок)

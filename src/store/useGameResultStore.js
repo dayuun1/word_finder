@@ -1,8 +1,11 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware'; 
+
 /**
- * @fileoverview Стор результату останньої гри
- * @module store/useGameResultStore
+ * @category Store
+ * @module useGameResultStore
+ * @memberof Store
+ * @description Стор результату останньої гри
  */
 /**
  * @typedef {Object} GameResult

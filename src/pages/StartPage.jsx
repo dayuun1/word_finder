@@ -5,10 +5,11 @@ import Button from '../components/Button';
 import styles from '../styles/Page.module.css';
 
 /**
- * @fileoverview Стартова сторінка
- * @module pages/StartPage
+ * @category Pages
+ * @module StartPage
+ * @memberof Pages
+ * @description Стартова сторінка
  */
-
 /**
  * Головна стартова сторінка застосунку.
  * Відображає короткий опис гри та кнопку для початку нового раунду.

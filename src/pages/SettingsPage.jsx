@@ -10,10 +10,11 @@ import { useSettingsStore } from '../store/useSettingsStore';
 import styles from '../styles/Page.module.css';
 
 /**
- * @fileoverview Сторінка налаштувань гри
- * @module pages/SettingsPage
+ * @category Pages
+ * @module SettingsPage
+ * @memberof Pages
+ * @description Сторінка налаштувань гри
  */
-
 /**
  * Сторінка налаштувань гри.
  * Містить форму з валідацією для зміни мови,

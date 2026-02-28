@@ -1,7 +1,9 @@
 import React from 'react';
 /**
- * @fileoverview Компонент картки
- * @module components/Card
+ * @category Components
+ * @module Card
+ * @memberof Components
+ * @description Компонент картки
  */
 /**
  * Картка з заголовком та вмістом.

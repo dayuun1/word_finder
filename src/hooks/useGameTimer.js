@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-/**
- * @module hooks/useGameTimer
- */
 
 /**
- * Хук таймера гри
+ * @category Hooks
+ * @module useGameTimer
+ * @memberof Hooks
+ * @description Хук таймера гри
+ */
+/**
  * @param {number} initialTime - Початкове значення таймера в секундах
  * @param {boolean} isActive - Чи активний таймер зараз
  * @param {Function} onTimeEnd - Колбек, що викликається при закінченні часу

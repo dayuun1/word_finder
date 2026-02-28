@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { WORD_LISTS, LETTERS } from '../constants/wordLists';
-/**
- * @fileoverview Хук генерації ігрового поля
- * @module hooks/useWordGrid
- */
 
+/**
+ * @category Hooks
+ * @module useWordGrid
+ * @memberof Hooks
+ * @description Хук генерації ігрового поля
+ */
 /**
  * Хук ігрового поля
  * @param {string} difficulty - Розмір сітки

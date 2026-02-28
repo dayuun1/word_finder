@@ -1,9 +1,10 @@
+
 /**
- * @fileoverview Компонент кнопки
- * @module components/Button
+ * @category Components
+ * @module Button
+ * @memberof Components
+ * @description Компонент кнопки.
  */
-import React from 'react';
-import styles from '../styles/Button.module.css';
 /**
  * Універсальна кнопка застосунку.
  * Використовується на всіх сторінках для основних дій.
@@ -31,6 +32,9 @@ import styles from '../styles/Button.module.css';
  *   На головну
  * </Button>
  */
+import React from 'react';
+import styles from '../styles/Button.module.css';
+
  
 const Button = ({ children, onClick, styleType = 'primary', disabled = false, type = 'button' }) => {
   return (

@@ -1,10 +1,12 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-/**
- * @fileoverview Стор профілю гравця
- * @module store/useProfileStore
- */
 
+/**
+ * @category Store
+ * @module useProfileStore
+ * @memberof Store
+ * @description Стор профілю гравця
+ */
 /**
  * @typedef {Object} GameResult
  * @property {number} score - Кількість знайдених слів

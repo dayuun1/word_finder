@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="Components.module_components_Button.html">components/Button</a></li><li><a href="module-components_Card.html">components/Card</a></li><li><a href="module-components_GameEndModal.html">components/GameEndModal</a></li><li><a href="module-components_Header.html">components/Header</a></li><li><a href="module-components_WordGrid.html">components/WordGrid</a></li><li><a href="module-hooks_useGameTimer.html">hooks/useGameTimer</a></li><li><a href="module-hooks_useWordGrid.html">hooks/useWordGrid</a></li><li><a href="module-hooks_useWordSelection.html">hooks/useWordSelection</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GamePage">GamePage</a></li><li><a href="global.html#getInitialResult">getInitialResult</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-components_Card.html">components/Card</a></li><li><a href="module-components_GameEndModal.html">components/GameEndModal</a></li><li><a href="module-components_Header.html">components/Header</a></li><li><a href="module-components_Input.html">components/Input</a></li><li><a href="module-components_Portal.html">components/Portal</a></li><li><a href="module-components_RadioGroup.html">components/RadioGroup</a></li><li><a href="module-components_Title.html">components/Title</a></li><li><a href="module-components_WordGrid.html">components/WordGrid</a></li><li><a href="module-hooks_useGameTimer.html">hooks/useGameTimer</a></li><li><a href="module-hooks_useWordGrid.html">hooks/useWordGrid</a></li><li><a href="module-hooks_useWordSelection.html">hooks/useWordSelection</a></li><li><a href="module-pages_GamePage.html">pages/GamePage</a></li><li><a href="module-pages_LeaderboardPage.html">pages/LeaderboardPage</a></li><li><a href="module-pages_SettingsPage.html">pages/SettingsPage</a></li><li><a href="module-pages_StartPage.html">pages/StartPage</a></li><li><a href="module-pages_WordListPage.html">pages/WordListPage</a></li><li><a href="module-store_useGameResultStore.html">store/useGameResultStore</a></li><li><a href="module-store_useProfileStore.html">store/useProfileStore</a></li><li><a href="module-store_useSettingsStore.html">store/useSettingsStore</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Button">Button</a></li></ul></div><div class="category"><h2>Components</h2><h3>Modules</h3><ul><li><a href="Components.module_components_Button.html">components/Button</a></li></ul></div>
                 
             </nav>
         </div>
@@ -91,7 +91,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Універсальна кнопка застосунку.</p></div>
+            <div class="description"><p>Універсальний компонент кнопки.</p></div>
         
 
         
@@ -132,7 +132,7 @@
         <p class="tag-source">
             <a href="components_Button.jsx.html" class="button">View Source</a>
             <span>
-                <a href="components_Button.jsx.html">components/Button.jsx</a>, <a href="components_Button.jsx.html#line1">line 1</a>
+                <a href="components_Button.jsx.html">components/Button.jsx</a>, <a href="components_Button.jsx.html#line2">line 2</a>
             </span>
         </p>
     
@@ -401,7 +401,7 @@
         <p class="tag-source">
             <a href="components_Button.jsx.html" class="button">View Source</a>
             <span>
-                <a href="components_Button.jsx.html">components/Button.jsx</a>, <a href="components_Button.jsx.html#line18">line 18</a>
+                <a href="components_Button.jsx.html">components/Button.jsx</a>, <a href="components_Button.jsx.html#line38">line 38</a>
             </span>
         </p>
     
@@ -450,6 +450,33 @@
     </div>
 
 
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Основна кнопка</p>
+    
+    
+        <pre class="prettyprint"><code>&lt;Button onClick={() => console.log('click')}>  Натисни мене&lt;/Button></code></pre>
+    
+
+        <p class="code-caption">Вторинна заблокована кнопка</p>
+    
+    
+        <pre class="prettyprint"><code>&lt;Button styleType="secondary" disabled>  Недоступно&lt;/Button></code></pre>
+    
+
+        <p class="code-caption">Кнопка для відправки форми</p>
+    
+    
+        <pre class="prettyprint"><code>&lt;Button type="submit" styleType="primary">  Зберегти&lt;/Button></code></pre>
+    
+
+        <p class="code-caption">Текстова кнопка-посилання</p>
+    
+    
+        <pre class="prettyprint"><code>&lt;Button styleType="text" onClick={() => navigate('/')}>  На головну&lt;/Button></code></pre>
+    
 
 
 </div>

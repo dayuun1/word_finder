@@ -7,10 +7,11 @@ import { useSettingsStore } from '../store/useSettingsStore';
 import styles from '../styles/Page.module.css';
 
 /**
- * @fileoverview Сторінка списку слів
- * @module pages/WordListPage
+ * @category Pages
+ * @module WordListPage
+ * @memberof Pages
+ * @description Сторінка списку слів
  */
-
 /**
  * Сторінка перегляду всіх слів, доступних у грі.
  * Слова відображаються згруповано за розміром сітки для поточної мови з налаштувань.
