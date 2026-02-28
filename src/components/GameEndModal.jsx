@@ -1,7 +1,17 @@
 import React from 'react';
 import Portal from './Portal';
 import Button from './Button';
+/**
+ * @module components/GameEndModal
+ */
 
+/**
+ * Модальне вікно завершення гри
+ * @param {boolean} isOpen
+ * @param {number} score - Рахунок
+ * @param {number} totalWords - Всього слів
+ * @param {number} timeLeft - Залишок часу 
+ */
 const GameEndModal = ({ isOpen, onClose, onRestart, onNextRound, score, totalWords, timeLeft }) => {
   if (!isOpen) return null;
 

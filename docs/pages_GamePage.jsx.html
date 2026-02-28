@@ -1,4 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/GamePage.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/GamePage.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Title from '../components/Title';
 import Button from '../components/Button';
@@ -80,7 +108,7 @@ const GamePage = () => {
     const { timeLeft, resetTimer } = useGameTimer(settings.timeLimit, !gameEnded, handleTimeEnd);
 
     useEffect(() => {
-        if (foundWords.length === wordsInGrid.length && wordsInGrid.length > 0 && !gameEnded) {
+        if (foundWords.length === wordsInGrid.length &amp;&amp; wordsInGrid.length > 0 &amp;&amp; !gameEnded) {
             finishGame();
         }
     }, [foundWords, wordsInGrid, gameEnded, settings]);
@@ -116,15 +144,15 @@ const GamePage = () => {
     };
 
     return (
-        <div className={`${styles.page} ${styles.gamePage}`}>
-            <div className={styles.gameHeader}>
-                <Title text={`Час: ${timeLeft}с`} type="h2" />
-                <p className={styles.wordsCounter}>
-                    Знайдено слів: <strong>{foundWords.length}</strong> / {wordsInGrid.length}
-                </p>
-            </div>
+        &lt;div className={`${styles.page} ${styles.gamePage}`}>
+            &lt;div className={styles.gameHeader}>
+                &lt;Title text={`Час: ${timeLeft}с`} type="h2" />
+                &lt;p className={styles.wordsCounter}>
+                    Знайдено слів: &lt;strong>{foundWords.length}&lt;/strong> / {wordsInGrid.length}
+                &lt;/p>
+            &lt;/div>
 
-            <WordGrid
+            &lt;WordGrid
                 grid={grid}
                 onCellMouseDown={handleCellMouseDown}
                 onCellMouseEnter={handleCellMouseEnter}
@@ -133,37 +161,59 @@ const GamePage = () => {
                 isCellFound={isCellFound}
             />
 
-            <div className={styles.wordsList}>
-                <h3>Слова для пошуку:</h3>
-                <ul className={styles.wordsGrid}>
+            &lt;div className={styles.wordsList}>
+                &lt;h3>Слова для пошуку:&lt;/h3>
+                &lt;ul className={styles.wordsGrid}>
                     {wordsInGrid.map((word, idx) => (
-                        <li 
+                        &lt;li 
                             key={idx} 
                             className={foundWords.includes(word) ? styles.foundWord : styles.pendingWord}
                         >
                             {word}
-                        </li>
+                        &lt;/li>
                     ))}
-                </ul>
-            </div>
+                &lt;/ul>
+            &lt;/div>
 
-            <div className={styles.buttonGroup}>
-                <Button onClick={handleManualEnd} styleType="secondary" disabled={gameEnded}>
+            &lt;div className={styles.buttonGroup}>
+                &lt;Button onClick={handleManualEnd} styleType="secondary" disabled={gameEnded}>
                     Завершити
-                </Button>
-                <Button onClick={handleBackToHome} styleType="text">
+                &lt;/Button>
+                &lt;Button onClick={handleBackToHome} styleType="text">
                     На головну
-                </Button>
-            </div>
+                &lt;/Button>
+            &lt;/div>
 
-            <GameEndModal
+            &lt;GameEndModal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
                 onRestart={handleRestart}
                 onNextRound={handleNextRound}
             />
-        </div>
+        &lt;/div>
     );
 };
 
-export default GamePage;
+export default GamePage;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-components_Button.html">components/Button</a></li><li><a href="module-components_GameEndModal.html">components/GameEndModal</a></li><li><a href="module-components_Header.html">components/Header</a></li><li><a href="module-components_WordGrid.html">components/WordGrid</a></li><li><a href="module-hooks_useGameTimer.html">hooks/useGameTimer</a></li><li><a href="module-hooks_useWordGrid.html">hooks/useWordGrid</a></li><li><a href="module-hooks_useWordSelection.html">hooks/useWordSelection</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GamePage">GamePage</a></li><li><a href="global.html#getInitialResult">getInitialResult</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sat Feb 28 2026 12:32:05 GMT+0200 (Восточная Европа, стандартное время)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

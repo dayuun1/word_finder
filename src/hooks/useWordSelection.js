@@ -1,5 +1,12 @@
 import { useState } from 'react';
+/**
+ * @module hooks/useWordSelection
+ */
 
+/**
+ * Хук виділення слів
+ * @returns {{ foundWords, selectedCells, handleCellMouseDown, handleCellMouseEnter, handleCellMouseUp, isCellSelected, isCellFound, resetSelection }}
+ */
 export const useWordSelection = (grid, wordsInGrid, wordPositions) => {
   const [selectedCells, setSelectedCells] = useState([]);
   const [foundWords, setFoundWords] = useState([]);

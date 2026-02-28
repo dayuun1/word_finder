@@ -1,4 +1,4 @@
-# Word Finder · [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Word Finder &middot; [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![Privacy Policy](https://img.shields.io/badge/GDPR-Privacy_Policy-blue.svg)](https://github.com/dayuun1/word_finder/blob/Lab1(standart)/PRIVACY_POLICY.md)
 
 A "Word Finder" game built with React. Find various words in a grid of different sizes vertically, horizontally, and diagonally.
 

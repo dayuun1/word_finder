@@ -1,6 +1,15 @@
 import React from 'react';
 import styles from '../styles/WordGrid.module.css';
-
+/**
+ * @fileoverview Компонент ігрового поля
+ * @module components/WordGrid
+ */
+/**
+ * Ігрове поле
+ * @param {string[][]} grid - 2D масив букв
+ * @param {Function} isCellSelected - (row, col) => boolean
+ * @param {Function} isCellFound - (row, col) => boolean
+ */
 const WordGrid = ({ grid, onCellMouseDown, onCellMouseEnter, onCellMouseUp, isCellSelected, isCellFound }) => (
   <div className={styles.wordGridContainer}>
     {grid.map((row, rIdx) => (

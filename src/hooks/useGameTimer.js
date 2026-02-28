@@ -1,4 +1,12 @@
 import { useState, useEffect } from 'react';
+/**
+ * @module hooks/useGameTimer
+ */
+
+/**
+ * Хук таймера гри
+ * @returns {{ timeLeft: number, resetTimer: Function }}
+ */
 
 export const useGameTimer = (initialTime, isActive, onTimeEnd) => {
   const [timeLeft, setTimeLeft] = useState(initialTime);

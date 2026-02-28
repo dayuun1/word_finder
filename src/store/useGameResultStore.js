@@ -1,6 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware'; 
-
+/**
+ * Стор результату останньої гри.
+ * Зберігається в localStorage під ключем 'last-game-result'.
+ *
+ * @property {Object} lastResult - Результат останньої гри
+ * @property {Function} setLastResult - Зберегти результат
+ * @property {Function} clearLastResult - Скинути до початкового стану
+ */
 const getInitialResult = () => ({
     score: 0,
     totalWords: 0,
