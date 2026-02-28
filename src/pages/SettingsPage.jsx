@@ -9,6 +9,18 @@ import { settingsSchema } from '../utils/validationSchema';
 import { useSettingsStore } from '../store/useSettingsStore';
 import styles from '../styles/Page.module.css';
 
+/**
+ * @fileoverview Сторінка налаштувань гри
+ * @module pages/SettingsPage
+ */
+
+/**
+ * Сторінка налаштувань гри.
+ * Містить форму з валідацією для зміни мови,
+ * складності, теми, режиму гри, ліміту часу та максимальної довжини слова.
+ * @returns {JSX.Element}
+ */
+
 const languageOptions = [
   { value: 'ukr', label: 'Українська' },
   { value: 'eng', label: 'English' },

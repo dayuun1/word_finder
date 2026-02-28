@@ -6,6 +6,18 @@ import Card from '../components/Card';
 import { useProfileStore } from '../store/useProfileStore';
 import styles from '../styles/Page.module.css';
 
+/**
+ * @fileoverview Сторінка таблиці результатів
+ * @module pages/LeaderboardPage
+ */
+
+/**
+ * Сторінка зі статистикою гравця та історією ігор.
+ * Відображає загальні показники (кількість ігор, відсоток перемог, середній рахунок)
+ * та список останніх 10 зіграних ігор.
+ * @returns {JSX.Element}
+ */
+
 const LeaderboardPage = () => {
   const navigate = useNavigate();
 const profile = useProfileStore((state) => state.profile);

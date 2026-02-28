@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> pages/SettingsPage.jsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-components_Button.html">components/Button</a></li><li><a href="module-components_Card.html">components/Card</a></li><li><a href="module-components_GameEndModal.html">components/GameEndModal</a></li><li><a href="module-components_Header.html">components/Header</a></li><li><a href="module-components_Input.html">components/Input</a></li><li><a href="module-components_Portal.html">components/Portal</a></li><li><a href="module-components_RadioGroup.html">components/RadioGroup</a></li><li><a href="module-components_Title.html">components/Title</a></li><li><a href="module-components_WordGrid.html">components/WordGrid</a></li><li><a href="module-hooks_useGameTimer.html">hooks/useGameTimer</a></li><li><a href="module-hooks_useWordGrid.html">hooks/useWordGrid</a></li><li><a href="module-hooks_useWordSelection.html">hooks/useWordSelection</a></li><li><a href="module-pages_GamePage.html">pages/GamePage</a></li><li><a href="module-pages_LeaderboardPage.html">pages/LeaderboardPage</a></li><li><a href="module-pages_SettingsPage.html">pages/SettingsPage</a></li><li><a href="module-pages_StartPage.html">pages/StartPage</a></li><li><a href="module-pages_WordListPage.html">pages/WordListPage</a></li><li><a href="module-store_useGameResultStore.html">store/useGameResultStore</a></li><li><a href="module-store_useProfileStore.html">store/useProfileStore</a></li><li><a href="module-store_useSettingsStore.html">store/useSettingsStore</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>pages/SettingsPage.jsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import Title from '../components/Title';
+import Card from '../components/Card';
+import Button from '../components/Button';
+import { settingsSchema } from '../utils/validationSchema';
+import { useSettingsStore } from '../store/useSettingsStore';
+import styles from '../styles/Page.module.css';
+
+/**
+ * @fileoverview Сторінка налаштувань гри
+ * @module pages/SettingsPage
+ */
+
+/**
+ * Сторінка налаштувань гри.
+ * Містить форму з валідацією для зміни мови,
+ * складності, теми, режиму гри, ліміту часу та максимальної довжини слова.
+ * @returns {JSX.Element}
+ */
+
+const languageOptions = [
+  { value: 'ukr', label: 'Українська' },
+  { value: 'eng', label: 'English' },
+];
+
+const difficultyOptions = [
+  { value: '5x5', label: 'Легка (5x5)' },
+  { value: '10x10', label: 'Середня (10x10)' },
+  { value: '15x15', label: 'Складна (15x15)' },
+];
+
+const themeOptions = [
+  { value: 'default', label: 'Стандартна' },
+  { value: 'dark', label: 'Темна' },
+  { value: 'different', label: 'Кольорова' },
+];
+
+const gameModeOptions = [
+  { value: 'classic', label: 'Класичний' },
+  { value: 'time', label: 'На час' }
+];
+
+const SettingsPage = () => {
+  const navigate = useNavigate();
+  const settings = useSettingsStore((state) => state.settings);
+  const updateSettings = useSettingsStore((state) => state.updateSettings);
+  
+  const { control, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(settingsSchema),
+    defaultValues: settings
+  });
+
+  useEffect(() => {
+    reset(settings);
+  }, [settings, reset]);
+
+  const onSubmit = (data) => {
+    updateSettings(data);
+  };
+
+  return (
+    &lt;div className={`${styles.page} ${styles.settingsPage}`}>
+      &lt;Title text="Налаштування Гри" type="h1" />
+      
+      &lt;form onSubmit={handleSubmit(onSubmit)} className={styles.settingsForm}>
+        &lt;Card title="Мова">
+          &lt;div className={styles.formGroup}>
+            &lt;label className={styles.formLabel}>Оберіть мову інтерфейсу та слів:&lt;/label>
+            &lt;Controller
+              name="language"
+              control={control}
+              render={({ field }) => (
+                &lt;div className={styles.radioOptions}>
+                  {languageOptions.map((option) => (
+                    &lt;label key={option.value} className={styles.radioOption}>
+                      &lt;input
+                        type="radio"
+                        value={option.value}
+                        checked={field.value === option.value}
+                        onChange={() => field.onChange(option.value)}
+                      />
+                      {option.label}
+                    &lt;/label>
+                  ))}
+                &lt;/div>
+              )}
+            />
+            {errors.language &amp;&amp; &lt;span className={styles.errorMessage}>{errors.language.message}&lt;/span>}
+          &lt;/div>
+        &lt;/Card>
+
+        &lt;Card title="Складність та Слова">
+          &lt;div className={styles.formGroup}>
+            &lt;label className={styles.formLabel}>Розмір сітки:&lt;/label>
+            &lt;Controller
+              name="difficulty"
+              control={control}
+              render={({ field }) => (
+                &lt;div className={styles.radioOptions}>
+                  {difficultyOptions.map((option) => (
+                    &lt;label key={option.value} className={styles.radioOption}>
+                      &lt;input
+                        type="radio"
+                        value={option.value}
+                        checked={field.value === option.value}
+                        onChange={() => field.onChange(option.value)}
+                      />
+                      {option.label}
+                    &lt;/label>
+                  ))}
+                &lt;/div>
+              )}
+            />
+            {errors.difficulty &amp;&amp; &lt;span className={styles.errorMessage}>{errors.difficulty.message}&lt;/span>}
+          &lt;/div>
+
+          &lt;div className={styles.formGroup}>
+            &lt;label className={styles.formLabel}>Максимальна довжина слова:&lt;/label>
+            &lt;Controller
+              name="maxWordLength"
+              control={control}
+              render={({ field }) => (
+                &lt;input 
+                  type="number" 
+                  className={styles.appInput}
+                  {...field}
+                  onChange={(e) => field.onChange(parseInt(e.target.value))}
+                />
+              )}
+            />
+            {errors.maxWordLength &amp;&amp; &lt;span className={styles.errorMessage}>{errors.maxWordLength.message}&lt;/span>}
+          &lt;/div>
+        &lt;/Card>
+        
+        &lt;Card title="Тема та Режим">
+          &lt;div className={styles.formGroup}>
+            &lt;label className={styles.formLabel}>Тема (Колір сторінки/поля):&lt;/label>
+            &lt;Controller
+              name="theme"
+              control={control}
+              render={({ field }) => (
+                &lt;div className={styles.radioOptions}>
+                  {themeOptions.map((option) => (
+                    &lt;label key={option.value} className={styles.radioOption}>
+                      &lt;input
+                        type="radio"
+                        value={option.value}
+                        checked={field.value === option.value}
+                        onChange={() => field.onChange(option.value)}
+                      />
+                      {option.label}
+                    &lt;/label>
+                  ))}
+                &lt;/div>
+              )}
+            />
+            {errors.theme &amp;&amp; &lt;span className={styles.errorMessage}>{errors.theme.message}&lt;/span>}
+          &lt;/div>
+
+          &lt;div className={styles.formGroup}>
+            &lt;label className={styles.formLabel}>Режим гри:&lt;/label>
+            &lt;Controller
+              name="gameMode"
+              control={control}
+              render={({ field }) => (
+                &lt;div className={styles.radioOptions}>
+                  {gameModeOptions.map((option) => (
+                    &lt;label key={option.value} className={styles.radioOption}>
+                      &lt;input
+                        type="radio"
+                        value={option.value}
+                        checked={field.value === option.value}
+                        onChange={() => field.onChange(option.value)}
+                      />
+                      {option.label}
+                    &lt;/label>
+                  ))}
+                &lt;/div>
+              )}
+            />
+            {errors.gameMode &amp;&amp; &lt;span className={styles.errorMessage}>{errors.gameMode.message}&lt;/span>}
+          &lt;/div>
+
+          &lt;div className={styles.formGroup}>
+            &lt;label className={styles.formLabel}>Ліміт часу (секунди):&lt;/label>
+            &lt;Controller
+              name="timeLimit"
+              control={control}
+              render={({ field }) => (
+                &lt;input 
+                  type="number" 
+                  className={styles.appInput}
+                  {...field}
+                  onChange={(e) => field.onChange(parseInt(e.target.value))}
+                />
+              )}
+            />
+            {errors.timeLimit &amp;&amp; &lt;span className={styles.errorMessage}>{errors.timeLimit.message}&lt;/span>}
+          &lt;/div>
+        &lt;/Card>
+        
+        &lt;div className={styles.buttonGroup}>
+          &lt;Button type="submit" styleType="primary">Зберегти налаштування&lt;/Button>
+          &lt;Button type="button" onClick={() => navigate('/')} styleType="secondary">
+            Повернутися на Головну
+          &lt;/Button>
+        &lt;/div>
+      &lt;/form>
+    &lt;/div>
+  );
+};
+
+export default SettingsPage;</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

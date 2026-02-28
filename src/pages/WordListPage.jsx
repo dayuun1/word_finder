@@ -6,6 +6,17 @@ import { WORD_LISTS } from '../constants/wordLists';
 import { useSettingsStore } from '../store/useSettingsStore';
 import styles from '../styles/Page.module.css';
 
+/**
+ * @fileoverview Сторінка списку слів
+ * @module pages/WordListPage
+ */
+
+/**
+ * Сторінка перегляду всіх слів, доступних у грі.
+ * Слова відображаються згруповано за розміром сітки для поточної мови з налаштувань.
+ * @returns {JSX.Element}
+ */
+
 const WordListPage = () => {
   const navigate = useNavigate();
   const currentLang = useSettingsStore((state) => state.settings.language);

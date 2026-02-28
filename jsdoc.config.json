@@ -1,4 +1,26 @@
 {
-  "source": { "include": ["src"], "includePattern": "\\.(js|jsx)$" },
-  "opts": { "destination": "docs/", "recurse": true }
+  "source": {
+    "include": [
+      "src"
+    ],
+    "includePattern": "\\.(js|jsx)$",
+    "excludePattern": "(node_modules/|docs/|dist/)"
+  },
+  "opts": {
+    "destination": "docs/",
+    "recurse": true,
+    "readme": "README.md",
+    "template": "node_modules/better-docs"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": false
+  },
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  }
 }

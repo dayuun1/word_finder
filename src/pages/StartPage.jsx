@@ -4,6 +4,16 @@ import Title from '../components/Title';
 import Button from '../components/Button';
 import styles from '../styles/Page.module.css';
 
+/**
+ * @fileoverview Стартова сторінка
+ * @module pages/StartPage
+ */
+
+/**
+ * Головна стартова сторінка застосунку.
+ * Відображає короткий опис гри та кнопку для початку нового раунду.
+ * @returns {JSX.Element}
+ */
 const StartPage = () => {
   const navigate = useNavigate();
 

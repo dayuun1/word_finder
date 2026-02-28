@@ -5,7 +5,10 @@ import { useState, useEffect } from 'react';
 
 /**
  * Хук таймера гри
- * @returns {{ timeLeft: number, resetTimer: Function }}
+ * @param {number} initialTime - Початкове значення таймера в секундах
+ * @param {boolean} isActive - Чи активний таймер зараз
+ * @param {Function} onTimeEnd - Колбек, що викликається при закінченні часу
+ * @returns {{ timeLeft: number, resetTimer: Function }} Стан таймера та функція скидання
  */
 
 export const useGameTimer = (initialTime, isActive, onTimeEnd) => {

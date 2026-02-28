@@ -1,5 +1,15 @@
 import React from 'react';
-
+/**
+ * @fileoverview Компонент картки
+ * @module components/Card
+ */
+/**
+ * Картка з заголовком та вмістом.
+ * Використовується для групування пов'язаного контенту.
+ * @param {string} [title] - Заголовок картки
+ * @param {React.ReactNode} children - Вміст картки
+ * @returns {JSX.Element} Елемент картки
+ */
 const Card = ({ title, children }) => {
   return (
     <div className="app-card">

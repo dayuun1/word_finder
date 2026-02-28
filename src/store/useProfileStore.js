@@ -1,6 +1,31 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+/**
+ * @fileoverview Стор профілю гравця
+ * @module store/useProfileStore
+ */
 
+/**
+ * @typedef {Object} GameResult
+ * @property {number} score - Кількість знайдених слів
+ * @property {number} totalWords - Загальна кількість слів
+ * @property {number} timeLeft - Залишок часу в секундах
+ * @property {boolean} won - Чи виграна гра
+ * @property {string} difficulty - Складність гри
+ * @property {string} language - Мова гри
+ * @property {string} date - ISO-рядок дати гри
+ */
+/**
+ * @typedef {Object} PlayerProfile
+ * @property {number} gamesPlayed - Загальна кількість зіграних ігор
+ * @property {number} gamesWon - Кількість виграних ігор
+ * @property {number} totalScore - Сумарний рахунок
+ * @property {number|null} bestTime - Найкращий залишок часу
+ * @property {GameResult[]} history - Історія останніх 10 ігор
+ */
+/**
+ * @returns {PlayerProfile}
+ */
 const getDefaultProfile = () => ({
     gamesPlayed: 0,
     gamesWon: 0,

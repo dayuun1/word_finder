@@ -12,5 +12,8 @@ In accordance with GDPR requirements, we inform you about the following:
 * **Right to Erasure (Right to be Forgotten)**: Since all data is stored exclusively in your browser, you can delete it at any time by clearing your browser's cache and site data.
 * **Data Sharing**: Your data is stored locally on your device and is never transmitted to third parties.
 
-## 4. Contact
+## 4. Third-Party Libraries
+The application uses open-source libraries (e.g., React, Zustand, React-Cookie-Consent). All dependencies have been screened for compliance, and a full license report is available in the `licenses-report.txt` file in the project root.
+
+## 5. Contact
 For any inquiries regarding this project, please contact: **ipz232_vdb@student.ztu.edu.ua**.

@@ -2,9 +2,9 @@ import React from 'react';
 import Portal from './Portal';
 import Button from './Button';
 /**
+ * @fileoverview Компонент Модального вікна
  * @module components/GameEndModal
  */
-
 /**
  * Модальне вікно завершення гри
  * @param {boolean} isOpen

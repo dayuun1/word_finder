@@ -1,10 +1,14 @@
 import { useState } from 'react';
 /**
+ * @fileoverview Хук виділення та перевірки слів
  * @module hooks/useWordSelection
  */
 
 /**
  * Хук виділення слів
+ * @typedef {Object} CellPosition
+ * @property {number} row - Рядок клітинки
+ * @property {number} col - Стовпець клітинки
  * @returns {{ foundWords, selectedCells, handleCellMouseDown, handleCellMouseEnter, handleCellMouseUp, isCellSelected, isCellFound, resetSelection }}
  */
 export const useWordSelection = (grid, wordsInGrid, wordPositions) => {
