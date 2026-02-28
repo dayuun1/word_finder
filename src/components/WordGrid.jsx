@@ -14,6 +14,7 @@ import React from 'react';
 import styles from '../styles/WordGrid.module.css';
 
 
+
 const WordGrid = ({ grid, onCellMouseDown, onCellMouseEnter, onCellMouseUp, isCellSelected, isCellFound }) => (
   <div className={styles.wordGridContainer}>
     {grid.map((row, rIdx) => (

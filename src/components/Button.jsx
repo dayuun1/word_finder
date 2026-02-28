@@ -1,5 +1,5 @@
 
-/**
+ /**
  * @category Components
  * @module Button
  * @memberof Components
@@ -35,7 +35,8 @@
 import React from 'react';
 import styles from '../styles/Button.module.css';
 
- 
+
+
 const Button = ({ children, onClick, styleType = 'primary', disabled = false, type = 'button' }) => {
   return (
     <button 

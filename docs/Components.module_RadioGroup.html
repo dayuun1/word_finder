@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> StartPage</title>
+  <title> RadioGroup</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -74,7 +74,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Module</p>
-                    <h1>StartPage</h1>
+                    <h1>RadioGroup</h1>
                 </header>
                 
 
@@ -91,7 +91,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Стартова сторінка</p></div>
+            <div class="description"><p>Компонент радіо-кнопок</p></div>
         
 
         
@@ -130,9 +130,9 @@
 
     
         <p class="tag-source">
-            <a href="pages_StartPage.jsx.html" class="button">View Source</a>
+            <a href="components_RadioGroup.jsx.html" class="button">View Source</a>
             <span>
-                <a href="pages_StartPage.jsx.html">pages/StartPage.jsx</a>, <a href="pages_StartPage.jsx.html#line7">line 7</a>
+                <a href="components_RadioGroup.jsx.html">components/RadioGroup.jsx</a>, <a href="components_RadioGroup.jsx.html#line3">line 3</a>
             </span>
         </p>
     
@@ -166,8 +166,8 @@
 
 
     
-    <h4 class="name" id="~StartPage">
-        <a class="href-link" href="#~StartPage">#</a>
+    <h4 class="name" id="~RadioGroup">
+        <a class="href-link" href="#~RadioGroup">#</a>
         
             
                 <span class='tag'>inner</span>
@@ -175,7 +175,7 @@
         
         <span class="code-name">
             
-                StartPage<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span>
+                RadioGroup<span class="signature">(label, options, selected, onSelect)</span><span class="type-signature"> &rarr; {JSX.Element}</span>
             
         </span>
     </h4>
@@ -184,8 +184,7 @@
     
     
     <div class="description">
-        <p>Головна стартова сторінка застосунку.
-Відображає короткий опис гри та кнопку для початку нового раунду.</p>
+        <p>Група радіо-кнопок для вибору одного значення з переліку.</p>
     </div>
     
 
@@ -196,6 +195,132 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>label</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Заголовок групи</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;RadioOption></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Масив доступних опцій</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>selected</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Поточно вибране значення</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>onSelect</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">function</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Обробник вибору опції</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -234,9 +359,9 @@
 
     
         <p class="tag-source">
-            <a href="pages_StartPage.jsx.html" class="button">View Source</a>
+            <a href="components_RadioGroup.jsx.html" class="button">View Source</a>
             <span>
-                <a href="pages_StartPage.jsx.html">pages/StartPage.jsx</a>, <a href="pages_StartPage.jsx.html#line18">line 18</a>
+                <a href="components_RadioGroup.jsx.html">components/RadioGroup.jsx</a>, <a href="components_RadioGroup.jsx.html#line23">line 23</a>
             </span>
         </p>
     
@@ -267,6 +392,8 @@
 
 <div class="columns">
     
+    <div class='param-desc column is-7'><p>Група радіо-кнопок</p></div>
+    
     
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
@@ -291,6 +418,161 @@
         </div>
     
 
+    
+        <div class='vertical-section'>
+            <h1>Type Definitions</h1>
+            <div class="members">
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Object</code>
+
+
+    </span>
+
+<h4 class="name" id="~RadioOption">
+    <a class="href-link" href="#~RadioOption">#</a>
+    
+    <span class="code-name">
+        RadioOption
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>value</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">string</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>Значення опції</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>label</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">string</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>Текст опції</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_RadioGroup.jsx.html" class="button">View Source</a>
+            <span>
+                <a href="components_RadioGroup.jsx.html">components/RadioGroup.jsx</a>, <a href="components_RadioGroup.jsx.html#line9">line 9</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
     
 
     

@@ -27,9 +27,25 @@ const App = () => {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
+        <CookieConsent
+          location="bottom"
+          buttonText="Прийняти всі"
+          declineButtonText="Тільки необхідні"
+          enableDeclineButton
+          cookieName="wordFinderCookieConsent"
+          style={{ background: "#900eaa", fontSize: "16px", textAlign: "left" }}
+          buttonStyle={{ background: "#1bc51e", color: "#fff", borderRadius: "5px" }}
+          declineButtonStyle={{ background: "#ec273b", borderRadius: "5px" }}
+          expires={150}
+        >
+          Ми використовуємо файли cookie для збереження налаштувань гри та вашої статистики. 
+          Ви можете змінити налаштування або прийняти їх.
+        </CookieConsent>
       </div>
+      
     </BrowserRouter>
   );
 };
+import CookieConsent from "react-cookie-consent";
 
 export default App;

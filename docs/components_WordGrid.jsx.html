@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Components</h2><h3>Modules</h3><ul><li><a href="Components.module_Button.html">Button</a></li><li><a href="Components.module_Card.html">Card</a></li><li><a href="Components.module_GameEndModal.html">GameEndModal</a></li><li><a href="Components.module_Header.html">Header</a></li><li><a href="Components.module_Input.html">Input</a></li><li><a href="Components.module_PorRadioGrouptal.html">PorRadioGrouptal</a></li><li><a href="Components.module_Portal.html">Portal</a></li><li><a href="Components.module_Title.html">Title</a></li><li><a href="Components.module_WordGrid.html">WordGrid</a></li></ul></div><div class="category"><h2>Hooks</h2><h3>Modules</h3><ul><li><a href="Hooks.module_useGameTimer.html">useGameTimer</a></li><li><a href="Hooks.module_useWordGrid.html">useWordGrid</a></li><li><a href="Hooks.module_useWordSelection.html">useWordSelection</a></li></ul></div><div class="category"><h2>Pages</h2><h3>Modules</h3><ul><li><a href="Pages.module_GamePage.html">GamePage</a></li><li><a href="Pages.module_LeaderboardPage.html">LeaderboardPage</a></li><li><a href="Pages.module_SettingsPage.html">SettingsPage</a></li><li><a href="Pages.module_StartPage.html">StartPage</a></li><li><a href="Pages.module_WordListPage.html">WordListPage</a></li></ul></div><div class="category"><h2>Store</h2><h3>Modules</h3><ul><li><a href="Store.module_useGameResultStore.html">useGameResultStore</a></li><li><a href="Store.module_useProfileStore.html">useProfileStore</a></li><li><a href="Store.module_useSettingsStore.html">useSettingsStore</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Components</h2><h3>Modules</h3><ul><li><a href="Components.module_Button.html">Button</a></li><li><a href="Components.module_Card.html">Card</a></li><li><a href="Components.module_GameEndModal.html">GameEndModal</a></li><li><a href="Components.module_Header.html">Header</a></li><li><a href="Components.module_Input.html">Input</a></li><li><a href="Components.module_Portal.html">Portal</a></li><li><a href="Components.module_RadioGroup.html">RadioGroup</a></li><li><a href="Components.module_Title.html">Title</a></li><li><a href="Components.module_WordGrid.html">WordGrid</a></li></ul></div><div class="category"><h2>Hooks</h2><h3>Modules</h3><ul><li><a href="Hooks.module_useGameTimer.html">useGameTimer</a></li><li><a href="Hooks.module_useWordGrid.html">useWordGrid</a></li><li><a href="Hooks.module_useWordSelection.html">useWordSelection</a></li></ul></div><div class="category"><h2>Pages</h2><h3>Modules</h3><ul><li><a href="Pages.module_GamePage.html">GamePage</a></li><li><a href="Pages.module_LeaderboardPage.html">LeaderboardPage</a></li><li><a href="Pages.module_SettingsPage.html">SettingsPage</a></li><li><a href="Pages.module_StartPage.html">StartPage</a></li><li><a href="Pages.module_WordListPage.html">WordListPage</a></li></ul></div><div class="category"><h2>Store</h2><h3>Modules</h3><ul><li><a href="Store.module_useGameResultStore.html">useGameResultStore</a></li><li><a href="Store.module_useProfileStore.html">useProfileStore</a></li><li><a href="Store.module_useSettingsStore.html">useSettingsStore</a></li></ul></div>
                 
             </nav>
         </div>
@@ -85,7 +85,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
+            <pre class="prettyprint source linenums"><code>
+import React from 'react';
 import styles from '../styles/WordGrid.module.css';
 
 /**
@@ -100,6 +101,7 @@ import styles from '../styles/WordGrid.module.css';
  * @param {Function} isCellSelected - (row, col) => boolean
  * @param {Function} isCellFound - (row, col) => boolean
  */
+
 const WordGrid = ({ grid, onCellMouseDown, onCellMouseEnter, onCellMouseUp, isCellSelected, isCellFound }) => (
   &lt;div className={styles.wordGridContainer}>
     {grid.map((row, rIdx) => (
