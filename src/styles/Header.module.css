@@ -1,0 +1,112 @@
+.appHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.logoLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #007bff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.headerNav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.navLink {
+  text-decoration: none;
+}
+
+.navButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+}
+
+.primaryButton:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+}
+
+.secondaryButton {
+  background: linear-gradient(135deg, #6c757d 0%, #545b62 100%);
+  color: white;
+}
+
+.secondaryButton:hover {
+  background: linear-gradient(135deg, #545b62 0%, #3e4347 100%);
+}
+
+.textButton {
+  background: transparent;
+  color: #007bff;
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.textButton:hover {
+  color: #0056b3;
+  background: rgba(0, 123, 255, 0.05);
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .appHeader {
+    padding: 10px 20px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .headerNav {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 8px;
+  }
+
+  .navButton {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

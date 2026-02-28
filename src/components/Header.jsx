@@ -1,27 +1,38 @@
 import React from 'react';
-import Button from './Button';
+import { Link } from 'react-router-dom';
+import styles from '../styles/Header.module.css';
 
-const Header = ({ navigate, gameState }) => {
+const Header = () => {
   return (
-    <header className="app-header">
-      <h1 className="logo" onClick={() => navigate('start')}>Word Finder</h1>
+    <header className={styles.appHeader}>
+      <Link to="/" className={styles.logoLink}>
+        <h1 className={styles.logo}>Word Finder</h1>
+      </Link>
       
-      <nav className="header-nav">
-        {gameState !== 'start' && gameState !== 'playing' && (
-             <Button onClick={() => navigate('start')} styleType="text">Головна</Button>
-        )}
+      <nav className={styles.headerNav}>
+        <Link to="/" className={styles.navLink}>
+          <button className={`${styles.navButton} ${styles.textButton}`}>
+            Головна
+          </button>
+        </Link>
         
-        <Button onClick={() => navigate('profile')}>
-          Профіль
-        </Button>
+        <Link to="/words" className={styles.navLink}>
+          <button className={`${styles.navButton} ${styles.primaryButton}`}>
+            Слова
+          </button>
+        </Link>
         
-        <Button onClick={() => navigate('word_list')}>
-          Слова
-        </Button>
+        <Link to="/leaderboard" className={styles.navLink}>
+          <button className={`${styles.navButton} ${styles.primaryButton}`}>
+            Результати
+          </button>
+        </Link>
         
-        <Button onClick={() => navigate('settings')}>
-          Налаштування
-        </Button>
+        <Link to="/settings" className={styles.navLink}>
+          <button className={`${styles.navButton} ${styles.primaryButton}`}>
+            Налаштування
+          </button>
+        </Link>
       </nav>
     </header>
   );

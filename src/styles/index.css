@@ -1,110 +1,148 @@
-
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f4f9;
+  color: #333;
 }
 
-.app-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+* {
+  box-sizing: border-box;
 }
 
-.page {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  animation: slideUp 0.3s ease-in-out;
+}
+
+.modal-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.modal-stats {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.modal-stats .stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.modal-stats .stat-item:last-child {
+  margin-bottom: 0;
+}
+
+.modal-stats .stat-label {
+  font-weight: 600;
+  color: #555;
+}
+
+.modal-stats .stat-value {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 20px;
+}
+
+.modal-message {
+  text-align: center;
+  margin: 25px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.success-msg {
+  color: #28a745;
+}
+
+.good-msg {
+  color: #17a2b8;
+}
+
+.ok-msg {
+  color: #ffc107;
+}
+
+.try-msg {
+  color: #dc3545;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.modal-actions button {
+  margin-top: 0;
+  flex: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 25px;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .modal-actions button {
     width: 100%;
-    text-align: center;
-}
-
-.app-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    margin-top: 15px;
-}
-
-.app-button.primary {
-    background-color: #007bff;
-    color: white;
-}
-
-.app-button.primary:hover {
-    background-color: #0056b3;
-}
-
-.app-button.secondary {
-    background-color: #6c757d;
-    color: white;
-}
-
-.word-grid-container {
-    display: inline-block;
-    border: 2px solid #ccc;
-    margin: 20px auto;
-}
-
-.grid-row {
-    display: flex;
-}
-
-.grid-cell {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #eee;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.grid-cell.selected {
-    background-color: #ffcc00; 
-}
-
-.score {
-    display: block;
-    font-size: 3em;
-    font-weight: bold;
-    color: #13461f;
-    margin: 10px 0;
-}
-.app-header {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px 40px; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000; 
-}
-
-.header-nav {
-    display: flex;
-    gap: 15px; /
-}
-
-.content-wrapper {
-    padding-top: 70px; 
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  }
 }

@@ -1,76 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import StartPage from './pages/StartPage';
 import GamePage from './pages/GamePage';
-import ResultsPage from './pages/ResultsPage';
 import SettingsPage from './pages/SettingsPage'; 
-import ProfilePage from './pages/ProfilePage';   
-import WordListPage from './pages/WordListPage'; 
+import WordListPage from './pages/WordListPage';
+import LeaderboardPage from './pages/LeaderboardPage';
 import Header from './components/Header';
-import './styles/index.css';
-
-const GAME_STATES = {
-  START: 'start',
-  PLAYING: 'playing',
-  RESULTS: 'results',
-  SETTINGS: 'settings', 
-  PROFILE: 'profile',   
-  WORD_LIST: 'word_list', 
-};
+import { useSettingsStore } from './store/useSettingsStore';
+import styles from './styles/App.module.css';
 
 const App = () => {
-  const [gameState, setGameState] = useState(GAME_STATES.START);
-  
-  const [language, setLanguage] = useState('ukr');
-  const [difficulty, setDifficulty] = useState('5x5');
-  const [profile, setProfile] = useState({ 
-    nickname: 'WordMaster', 
-    wordsGuessed: 42 
-  });
-  const [theme, setTheme] = useState('default'); 
-
-  const navigate = (state) => setGameState(state);
-  
-  const handleStartGame = () => navigate(GAME_STATES.PLAYING); 
-  const handleEndGame = (score) => navigate(GAME_STATES.RESULTS);
-  const handleRestart = () => navigate(GAME_STATES.START);
-
-  const renderPage = () => {
-    switch (gameState) {
-      case GAME_STATES.START:
-        return <StartPage onStart={handleStartGame} />; 
-        
-      case GAME_STATES.PLAYING:
-        return <GamePage onEndGame={handleEndGame} currentDifficulty={difficulty} />;
-      case GAME_STATES.RESULTS:
-        return <ResultsPage onRestart={handleRestart} finalScore={4} />;
-      case GAME_STATES.SETTINGS:
-        return (
-          <SettingsPage 
-            navigate={navigate}
-            currentLang={language}
-            onLangChange={setLanguage}
-            currentDiff={difficulty}
-            onDiffChange={setDifficulty}
-            currentTheme={theme}
-            onThemeChange={setTheme}
-          />
-        );
-      case GAME_STATES.PROFILE:
-        return <ProfilePage navigate={navigate} profile={profile} />;
-      case GAME_STATES.WORD_LIST:
-        return <WordListPage navigate={navigate} currentLang={language} />;
-      default:
-        return <StartPage navigate={navigate} />;
-    }
-  };
+  const settings = useSettingsStore((state) => state.settings);
 
   return (
-    <div className={`app-container theme-${theme}`}>
-      <Header navigate={navigate} gameState={gameState} /> 
-      <div className="content-wrapper">
-        {renderPage()}
+    <BrowserRouter>
+      <div className={`${styles.appContainer} ${styles[`theme${settings.theme.charAt(0).toUpperCase() + settings.theme.slice(1)}`]}`}>
+        <Header />
+        
+        <div className={styles.contentWrapper}>
+          <Routes>
+            <Route path="/" element={<StartPage />} />
+            <Route path="/game" element={<GamePage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/words" element={<WordListPage />} />
+            <Route path="/leaderboard" element={<LeaderboardPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 };
 
